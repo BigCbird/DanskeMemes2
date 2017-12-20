@@ -14,8 +14,7 @@ export class NavMenu extends React.Component<{}, {}> {
                     </button>
                     <Link className='navbar-brand' to={ '/' }>DanskeMemes2</Link>
                 </div>
-                <div className='clearfix'></div>
-                <div className='navbar-collapse collapse'>
+                <div className='navbar-collapse collapse  navbar-right'>
                     <ul className='nav navbar-nav'>
                         <li>
                             <NavLink to={ '/' } exact activeClassName='active'>
