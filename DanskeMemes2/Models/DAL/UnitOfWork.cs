@@ -11,10 +11,10 @@ namespace DanskeMemes2.Models.DAL
     {
         private readonly ApplicationDbContext _context;
         public IRepository<Meme> Memes { get; }
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, IRepository<Meme> repository)
         {
             _context = context;
-            Memes = new Repository<Meme>(_context);
+            Memes = repository;
         }
         public void Dispose()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DanskeMemes2.Models.DAL;
+using DanskeMemes2.Models.DAL.Interfaces;
 using DanskeMemes2.Models.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +35,11 @@ namespace DanskeMemes2
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton(Configuration);
+            services.AddTransient<IStorageService, CloudStorageService>();
+            services.AddTransient<IRepository<Meme>, Repository<Meme>>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
             services.AddMvc();
         }
 
@@ -55,7 +61,7 @@ namespace DanskeMemes2
             }
 
             app.UseStaticFiles();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

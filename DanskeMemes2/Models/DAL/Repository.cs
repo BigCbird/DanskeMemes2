@@ -38,7 +38,7 @@ namespace DanskeMemes2.Models.DAL
 
         public void Add(TEntity entity)
         {
-            Context.Set<TEntity>().AddAsync(entity);
+            Context.Set<TEntity>().Add(entity);
         }
 
         public void Remove(TEntity entity)
